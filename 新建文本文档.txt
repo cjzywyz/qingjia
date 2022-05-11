@@ -1,0 +1,37 @@
+                                axios({
+                                    // 默认请求方式为get
+                                    method: 'get',
+                                    url: '0000.JSON',
+                                    // 传递参数
+                                    params: {
+                                        'isZhuangTai': 'true'
+                                    },
+                                    // responseType: 'json'
+                                }).then((response) => {
+                                    // 请求成功
+                                    let res = response.data;
+                                    console.log(res);
+                                }).catch((error) => {
+                                    // 请求失败，
+                                    console.log(error);
+                                });
+
+
+                                axios({
+                                    // 默认请求方式为get
+                                    method: 'get',
+                                    url: '0000.JSON',
+                                    // 传递参数
+                                    params: {
+                                        'isZhuangTai': 'false'
+                                    },
+                                    // responseType: 'json'
+                                }).then((response) => {
+                                    // 请求成功
+                                    let res = response.data;
+                                    console.log(res);
+                                }).catch((error) => {
+                                    // 请求失败，
+                                    console.log(error);
+                                });
+
