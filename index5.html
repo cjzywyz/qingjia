@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="bootstrap-3.4.1-dist/css/bootstrap.min.css">
+    <script src="jquery-3.6.0.js"></script>
+    <script src="jquery-3.6.0.min.js"></script>
+    <script src="bootstrap-3.4.1-dist/js/bootstrap.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/axios/0.27.2/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <title>Document</title>
+</head>
+
+    <style>
+        .btn-suc{
+            font-size: 20px;
+            font-weight: 400;
+            color: rgb(92,184,92)           
+        }
+        .btn-dan{
+            font-size: 20px;
+            font-weight: 400;
+            color: red
+        }
+    </style>
+
+<body>
+    <div class="container">
+    <table class="row table table-hover">
+        <thead>
+          <tr class="headTh">
+            <th class="col-md-1 text-center">班级名称</th>
+            <th class="col-md-1 text-center">学号</th>
+            <th class="col-md-1 text-center">姓名</th>
+            <th class="col-md-1 text-center">联系电话</th>
+            <th class="col-md-1 text-center">请假日期</th>
+            <th class="col-md-1 text-center">请假天数</th>
+            <th class="col-md-1 text-center">情况说明</th>
+            <th class="col-md-2 text-center">操作</th>
+            <th class="col-md-1 text-center">状态</th>
+          </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+    </div>
+
+    <script>
+        var oTr
+        var isZhuangTai
+        var xhr = new XMLHttpRequest()
+        xhr.open('get','123.JSON',true)
+        xhr.send()
+        console.log(isZhuangTai);
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState == 4) {
+                if (xhr.status == 200) {
+                    var data =  JSON.parse(xhr.response);
+                    console.log(data);
+                    for (let i = 0; i < data.web.length; i++) {
+                        oTr = document.createElement("tr")
+                        var oTd = document.createElement("td")
+                        var oTd1 = document.createElement("td")
+                        var oTd2 = document.createElement("td")
+                        var oTd3 = document.createElement("td")
+                        var oTd4 = document.createElement("td")
+                        var oTd5 = document.createElement("td")
+                        var oTd6 = document.createElement("td")
+                        var oTd7 = document.createElement("td")
+                        var oTd8 = document.createElement("td")
+
+                        
+
+                        oTd.innerText = data.web[i].id
+                        oTd1.innerText = data.web[i].name
+                        oTd2.innerText = data.web[i].age
+                        oTd3.innerText = data.web[i].banji
+                        oTd4.innerText = data.web[i].banji
+                        oTd5.innerText = data.web[i].banji
+                        oTd6.innerText = data.web[i].banji
+                        oTd7.innerHTML = "<button class='button_left btn btn-success'  style='margin-right: 15px;'>同意</button>" + "<button class='btn btn-danger'>拒绝</button>"
+                        oTd8.innerHTML = '未操作'
+                        
+
+                        // for (let a = 0; a < age.length; a++) {
+                        //     console.log(age[a]);
+                        // }
+                        // console.log(ages.length);
+
+                        // function axiosUserNum(){
+                        //     axios({
+                        //     // 默认请求方式为get
+                        //     method: 'get',
+                        //     url: '123.JSON',
+                        //     // 传递参数
+                        //     params: {
+                        //         'isZhuangTai': 'true',
+                        //         'userNum' : 'data.web[i].age'
+                        //     },
+                        //     // responseType: 'json'
+                        //     }).then((response) => {
+                        //         // 请求成功
+                        //         let res = response.data;
+                        //         // console.log(res.web[i].age);
+                        //     })
+                        // }
+                        
+
+                        
+
+                        oTr.appendChild(oTd);
+                        oTr.appendChild(oTd1);
+                        oTr.appendChild(oTd2);
+                        oTr.appendChild(oTd3);
+                        oTr.appendChild(oTd4)
+                        oTr.appendChild(oTd5)
+                        oTr.appendChild(oTd6)
+                        oTr.appendChild(oTd7)
+                        oTr.appendChild(oTd8)
+
+
+                        
+
+                        // 获取 tbody
+                        var tbody = document.querySelector('tbody')
+                        // 将创建的 tr 插入到 tbody 里面
+                        tbody.appendChild(oTr)
+                        // 设置 tr 的 class 值
+                        oTr.className = "text-center"
+                        // 设置 tr 的 id 值
+                        oTr.id = "rem"
+                        // 设置状态栏的 id
+                        oTd8.id = "zhuangtai"
+                        // 获取所有年龄
+                        oTd2.id = 'oTd2s'
+                    }
+                    // 获取所有 tr
+                    var oTrs = document.querySelectorAll('#rem')
+                    console.log(oTrs);
+                    // 获取所有 button
+                    let btn = document.querySelectorAll('button')
+                    // 获取所有 age 节点
+                    var oTd2s = document.querySelectorAll('#oTd2s')
+                    console.log(oTd2s);
+
+                    // 获取所有状态选项
+                    var zhuangtai = document.querySelectorAll('#zhuangtai')
+                    console.log(zhuangtai);
+                    // console.log(zhuangtai);
+                    // for (let z = 0; z < zhuangtai.length; z++) {
+                    //     console.log(zhuangtai[z]);
+                    // }
+
+
+                    // for (let z = 0; z < zhuangtai.length; z++) {
+                    //     zhuangtai[z].innerText = "同意"
+                    //     console.log(zhuangtai[z]);
+                    // }
+
+
+                    // 获取成功按钮 和 失败按钮
+                    var btn_success = document.querySelectorAll('.btn-success')
+                    console.log(btn_success);
+                    var btn_danger = document.querySelectorAll('.btn-danger') 
+                    console.log(btn_danger);
+
+
+                    // 点击同意按钮 同意
+                    for (let k = 0; k < btn_success.length; k++) {
+                        btn_success[k].addEventListener('click',function(){
+                            zhuangtai[k].className = 'btn-suc'
+                            zhuangtai[k].innerText = "同意";
+                            isZhuangTai = true     
+                            
+                            console.log(zhuangtai[k]);
+                            let userNum = oTd2s[k]
+
+                            axios({
+                                    // 默认请求方式为get
+                                    method: 'get',
+                                    url: '0000.JSON',
+                                    // 传递参数
+                                    params: {
+                                        'isZhuangTai': 'true',
+                                        'userNum' : 'userNum'
+                                    },
+                                    // responseType: 'json'
+                                })
+
+                        })
+                        
+                    }
+
+                    // 点击拒绝按钮 拒绝
+                    for (let k = 0; k < btn_danger.length; k++) {
+                        btn_danger[k].addEventListener('click',function(){
+                            zhuangtai[k].className = 'btn-dan'
+                            zhuangtai[k].innerHTML = "拒绝"
+                            isZhuangTai = false
+                            console.log(zhuangtai[k]);
+
+
+                                // axios({
+                                //     // 默认请求方式为get
+                                //     method: 'get',
+                                //     url: '0000.JSON',
+                                //     // 传递参数
+                                //     params: {
+                                //         'isZhuangTai': 'false'
+                                //     },
+                                //     // responseType: 'json'
+                                // }).then((response) => {
+                                //     // 请求成功
+                                //     let res = response.data;
+                                //     console.log(res);
+                                // }).catch((error) => {
+                                //     // 请求失败，
+                                //     console.log(error);
+                                // });
+
+                            })
+                        }
+                    }
+
+
+                    // // 循环 tr (点击按钮删除 tr)
+                    // for (let i = 0; i < oTrs.length; i++) {
+                    //     console.log(oTrs[i]);
+                    //     // 循环 tr 中的 button 按钮 
+                    //     for (let j = 0; j < btn.length; j++) {
+                    //         // 点击 button 删除 tr 节点
+                    //         btn[i].onclick = function(){
+                    //             console.log(oTrs[i]);
+                    //             tbody.removeChild(oTrs[i])
+                    //         }
+                    //     }
+                    // }
+                }
+            }
+    
+    </script>
+</body>
+</html>
