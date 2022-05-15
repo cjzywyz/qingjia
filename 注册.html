@@ -92,7 +92,7 @@
             if (!xh_judge) {
                 lab2.style.visibility = 'visible'
                 lab2.style.color = 'rgb(190 131 46 / 58%)'
-                lab2.innerHTML = '请输入最大8位数的密码'
+                lab2.innerHTML = '请输入最大8位数的学号'
                 return false
             }else{
                 lab2.innerHTML = '正确'
@@ -104,10 +104,11 @@
         function MyMiM(){
             // 对密码格式进行判断
             let reg2 = /^[0-9a-zA-Z_]+$/
-            let mm_judge = mima.value.length<=12 && reg2.test(mima.value)
+            let mm_judge = mima.value.length>=6 && mima.value.length<=12 && reg2.test(mima.value)
             if (!mm_judge) {
                 lab3.style.visibility = 'visible'
-                lab3.innerHTML = '密码请不要超过12位'
+                lab3.style.color = 'rgb(190 131 46 / 58%)'
+                lab3.innerHTML = '请输入6-12位数字字母'
                 return false
             }else {
                 lab3.innerHTML = '正确'
